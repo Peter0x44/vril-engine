@@ -1735,6 +1735,8 @@ void GL_BuildLightmaps (void)
 
 	r_framecount = 1;		// no dlightcache
 
+	last_lightmap_allocated = 0;
+
 	if (!lightmap_textures)
 	{
 		lightmap_textures = texture_extension_number;
