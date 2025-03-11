@@ -26,8 +26,8 @@ APP_DESCRIPTION := Call of Duty Zombies remake
 #---------------------------------------------------------------------------------
 ARCH	:=	-march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft
 
-CFLAGS	:=	-g -fpermissive -Wall -O3 -mword-relocations \
-			-fomit-frame-pointer -ffunction-sections \
+CFLAGS	:=	-g -fpermissive -Wall -O2 -mword-relocations \
+			-fomit-frame-pointer -ffunction-sections -flto\
 			$(ARCH)
 
 CFLAGS	+=	$(INCLUDE) -DARM11 -D__3DS__ -DGLQUAKE -DPLATFORM_DIRECTORY="ctr" -DPLATFORM_RENDERER="gl"
@@ -39,7 +39,7 @@ endif
 CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++11
 
 ASFLAGS	:=	-g $(ARCH)
-LDFLAGS	=	-specs=3dsx.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
+LDFLAGS	=	-specs=3dsx.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)  -flto -O2
 
 LIBS	:=  -lpicaGL -lctru -lm
 
